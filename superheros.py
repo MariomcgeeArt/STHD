@@ -1,17 +1,13 @@
 import random
 
-class Ability:
-    
+class Ability:  
     def __init__(self,name,attack_strength):
         self.name = name
         self.max_damage = attack_strength
 
-
     def attack(self):
         return random.randint(0, self.max_damage)
         # may need to turn these into strings 
-
-
 
 
 
@@ -25,8 +21,6 @@ class Armor:
 
 
 
-
-
 class Hero:
     def __init__(self,name,starting_health=100):
         self.name = name
@@ -35,37 +29,58 @@ class Hero:
         self.abilities= []
         self.armors= [] 
 
-
-
     def add_ability(self, ability):
         self.abilities.append(ability)
+
+    def add_armor(self, armor):
+        self.armors.append(armor)
 
     def attack(self):
         total = 0
         for ability in self.abilities:
             total += ability.attack()
-            return total        
+            return total
+
+    
+
+    def defend(self, damage_amt=0):
+        blocked = 0
+        for armor in self.armors:
+            blocked += armor.block()
+        return abs(blocked - damage_amt)
+
+    def take_damage(self, damage):
+        hit = damage - self.defend(damage)
+        self.current_health = self.current_health - hit
 
 
-        
 
 
-
-
-
-
-
-
-        
 if __name__ == "__main__":
     # If you run this file from the terminal
     # this block of code is executed.
-    ability = Ability("Great Debugging", 50)
-    another_ability = Ability("Smarty Pants", 90)
+
     hero = Hero("Grace Hopper", 200)
-    hero.add_ability(ability)
-    hero.add_ability(another_ability)
-    print(hero.attack())
+    shield = Armor("Shield", 50)
+    hero.add_armor(shield)
+    hero.take_damage(50)
+    print(hero.current_health)
+
+
+
+        
+
+    fire = Ability("Fire",20)
+    hero1 = Hero('Hero1',200)
+    hero1.add_ability(fire)
+    # OOP example printing out objects attribute 
+    print(hero1.abilities[0].name)
+
+
+
+
+
+
 
 
 
