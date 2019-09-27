@@ -40,18 +40,23 @@ class Hero:
         for ability in self.abilities:
             total += ability.attack()
             return total
-
-    
-
+            
     def defend(self, damage_amt=0):
         blocked = 0
         for armor in self.armors:
             blocked += armor.block()
         return abs(blocked - damage_amt)
 
-    def take_damage(self, damage):
-        hit = damage - self.defend(damage)
+    def take_damage(self, damage=0):
+        hit = self.defend(damage)
         self.current_health = self.current_health - hit
+
+    def is_alive(self):
+        alive = True
+        if self.current_health > 0:
+            return alive  
+        elif self.current_health <= 0:
+            return False    
 
 
 
@@ -60,21 +65,27 @@ if __name__ == "__main__":
     # If you run this file from the terminal
     # this block of code is executed.
 
+    # hero = Hero("Grace Hopper", 200)
+    # shield = Armor("Shield", 50)
+    # hero.add_armor(shield)
+    # hero.take_damage(50)
+    # print(hero.current_health)
+
+
     hero = Hero("Grace Hopper", 200)
-    shield = Armor("Shield", 50)
-    hero.add_armor(shield)
-    hero.take_damage(50)
-    print(hero.current_health)
-
-
+    hero.take_damage(190)
+    print(hero.is_alive())
+    # print(hero.current_health)
+    hero.take_damage(5)
+    print(hero.is_alive())
 
         
 
-    fire = Ability("Fire",20)
-    hero1 = Hero('Hero1',200)
-    hero1.add_ability(fire)
-    # OOP example printing out objects attribute 
-    print(hero1.abilities[0].name)
+    # fire = Ability("Fire",20)
+    # hero1 = Hero('Hero1',200)
+    # hero1.add_ability(fire)
+    # # OOP example printing out objects attribute 
+    # print(hero1.abilities[0].name)
 
 
 
