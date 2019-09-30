@@ -9,6 +9,9 @@ class Ability:
         return random.randint(0, self.max_damage)
         # may need to turn these into strings 
 
+class Weapon (Ability):
+    def attack(self):
+        return random.randint(self.max_damage,self.max_damage // 2)
 
 
 class Armor:
@@ -59,20 +62,17 @@ class Hero:
             return False
 
     def fight(self, opponent):
-       
-        # break
-        
         while self.is_alive() and opponent.is_alive():
             if not self.abilities and not opponent.abilities:
                 print("DRAW! ")
                 return
 
-            a1 = self.attack()
-            a2 = opponent.attack()
-            opponent.take_damage(a1)
+            # v1 = self.attack()
+            # v2 = opponent.attack()
+            opponent.take_damage(self.attack())
             
-            self.take_damage(a2)
-        
+            self.take_damage(opponent.attack())
+            
             if opponent.is_alive() == False:
                 print(f" {self.name} Wins! ")
                 return
@@ -85,8 +85,67 @@ class Hero:
 
 
 
+
+
+
+
+
+
         # function will retun the fight method between 2 instances of hero class and
          
+
+
+
+class Team(Hero):
+    def __init__(self,name):
+        self.name = name
+        self.heros = []
+
+    def remove_hero(self, name):
+        for name in self.heros:
+            self.heros.remove(name)
+        else:
+            return 0
+
+    def view_all_heros(self):
+        for index, list_item in enumerate(self.heros):
+            print("{} {}".format(index, list_item))
+
+    def add_hero(self, hero):
+        self.heros.append(hero)
+
+
+
+
+
+        
+
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -102,10 +161,10 @@ if __name__ == "__main__":
 
     hero1 = Hero("Wonder Woman")
     hero2 = Hero("Dumbledore")
-    ability1 = Ability("Super Speed", 20)
-    ability2 = Ability("Super Eyes", 13)
-    ability3 = Ability("Wizard Wand", 8)
-    ability4 = Ability("Wizard Beard", 2)
+    ability1 = Ability("Super Speed", 300)
+    ability2 = Ability("Super Eyes", 130)
+    ability3 = Ability("Wizard Wand", 80)
+    ability4 = Ability("Wizard Beard", 20)
     hero1.add_ability(ability1)
     hero1.add_ability(ability2)
     hero2.add_ability(ability3)
