@@ -35,7 +35,10 @@ class Hero:
         self.armors= []
 
     def add_weapon(self, weapon):
-        self.abilities.append(weapon)     
+        self.abilities.append(weapon)
+
+    def add_armor(self, armor):
+        self.armors.append(armor)     
 
     def add_ability(self, ability):
         self.abilities.append(ability)
