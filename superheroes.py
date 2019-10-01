@@ -32,7 +32,10 @@ class Hero:
         self.kills = 0
         self.deaths = 0
         self.abilities= []
-        self.armors= [] 
+        self.armors= []
+
+    def add_weapon(self, weapon):
+        self.abilities.append(weapon)     
 
     def add_ability(self, ability):
         self.abilities.append(ability)
