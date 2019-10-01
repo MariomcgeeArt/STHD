@@ -1,5 +1,7 @@
 import random
 
+
+
 class Ability:  
     def __init__(self, name, attack_strength):
         self.name = name
@@ -9,9 +11,12 @@ class Ability:
         return random.randint(0, self.max_damage)
         # may need to turn these into strings 
 
+
+
 class Weapon (Ability):
     def attack(self):
         return random.randint(self.max_damage // 2, self.max_damage)
+
 
 
 class Armor:
@@ -42,9 +47,6 @@ class Hero:
 
     def add_ability(self, ability):
         self.abilities.append(ability)
-
-    def add_armor(self, armor):
-        self.armors.append(armor)
 
     def attack(self):
         total = 0
@@ -101,6 +103,8 @@ class Hero:
                 print(f"{self.name} is DEAD! ")
                 return
 
+
+
 class Team:
     def __init__(self,name):
         self.name = name
@@ -145,8 +149,8 @@ class Team:
 
 class Arena:
     def __init__(self):
-        self.team_one = none
-        self.team_two = none
+        self.team_one = None
+        self.team_two = None
 
     def create_ability(self):
         name = input("Give your Hero an Ability!: ")
@@ -190,95 +194,81 @@ class Arena:
                 hero.add_weapon(self.create_weapon())
 
         return hero
-      
 
-     
+    def build_team_one(self):
+        name = input('enter name for team 1: ')
+        team1 = Team(name)
+        num_team1 = int(input('how many heroes do you want on your team 1?: '))
+        for i in range(num_team1):
+            hero1 = self.create_hero()
+            team1.add_hero(hero1)
+        self.team_one = team1
 
-        
+    def build_team_two(self):
+        name = input('enter name for team 2: ')
+        team2 = Team(name)
+        num_team2 = int(input('how many heroes do you want on your team 2?: '))
+        for i in range(num_team2):
+            hero2 = self.create_hero()
+            team2.add_hero(hero2)
+        self.team_two = team2
 
+    def team_battle(self):
+        return self.team_one.attack(self.team_two)
 
+    def show_stats(self):
+        if len(self.team_one.get_alive()) > 0:
+            print(f"{self.team_one.name} wins!")
+            for hero in self.team_one.get_alive():
+                print(hero)
+                print("team one alive")
+            #print(self.team_one.get_alive())
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        else:
+            print(f"{self.team_two.name} wins!")
+            for hero in self.team_two.get_alive():
+                print(hero)
+                print("team two alive")
+        self.team_one.stats()
+        self.team_two.stats()
 
 
 
 if __name__ == "__main__":
+    arena = Arena()
+    arena.build_team_one()
+    arena.build_team_two()
+    arena.team_battle()
+    arena.show_stats()
     # If you run this file from the terminal
     # this block of code is executed.
-
-
-
-    hero1 = Hero("Wonder Woman")
-    hero2 = Hero("Dumbledore")
-    ability1 = Ability("Super Speed", 300)
-    ability2 = Ability("Super Eyes", 130)
-    ability3 = Ability("Wizard Wand", 80)
-    ability4 = Ability("Wizard Beard", 20)
-    hero1.add_ability(ability1)
-    hero1.add_ability(ability2)
-    hero2.add_ability(ability3)
-    hero2.add_ability(ability4)
-    hero1.fight(hero2)
-
-
-
-
-
-
-
-
-
+    # hero1 = Hero("Wonder Woman")
+    # hero2 = Hero("Dumbledore")
+    # ability1 = Ability("Super Speed", 300)
+    # ability2 = Ability("Super Eyes", 130)
+    # ability3 = Ability("Wizard Wand", 80)
+    # ability4 = Ability("Wizard Beard", 20)
+    # hero1.add_ability(ability1)
+    # hero1.add_ability(ability2)
+    # hero2.add_ability(ability3)
+    # hero2.add_ability(ability4)
+    # hero1.fight(hero2)
     # hero = Hero("Grace Hopper", 200)
     # shield = Armor("Shield", 50)
     # hero.add_armor(shield)
     # hero.take_damage(50)
     # print(hero.current_health)
-
-
     # hero = Hero("Grace Hopper", 200)
     # hero.take_damage(150)
     # print(hero.is_alive())
     # # print(hero.current_health)
     # hero.take_damage(1500)
     # print(hero.is_alive())
-
-        
-
     # fire = Ability("Fire",20)
     # hero1 = Hero('Hero1',200)
     # hero1.add_ability(fire)
     # # OOP example printing out objects attribute 
     # print(hero1.abilities[0].name)
-
-
-
-
-
-
-
-
-
-
     # ability = Ability("Debugging Ability", 20)
     # armor = Armor("Debugging Armor", 10)
     # print(armor.name)
