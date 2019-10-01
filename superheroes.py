@@ -160,6 +160,39 @@ class Arena:
         weapon = Weapon(name,power)
         return weapon
 
+    def create_armor(self):
+        name = input("Give your Hero some Armor!: ")
+        defense = int(input('Give the Armor a defense level: '))
+        armor = Armor(name,defense)
+        return armor
+
+    def create_hero(self):
+        name = input("Enter a hero name: ")
+        health = int(input("Enter starting health: "))
+        hero = Hero(name, health)
+
+        choice_armor = input('Would you like to add armors for your hero, Y/N?: ').lower()
+        if choice_armor == 'y':
+            num = int(input('How many armors? '))
+            for i in range(num):
+                hero.add_armor(self.create_armor())
+
+        choice_ability = input('Would you like to add abilities for your hero, Y/N?: ').lower()
+        if choice_ability == 'y':
+            num = int(input('how many abilities?: '))
+            for i in range(num):
+                hero.add_ability(self.create_ability())
+
+        choice_weapon = input('Would you like to add weapons for your hero, Y/N?: ').lower()
+        if choice_weapon == 'y':
+            num = int(input('how many weapons?: '))
+            for i in range(num):
+                hero.add_weapon(self.create_weapon())
+
+        return hero
+      
+
+     
 
         
 
