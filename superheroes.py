@@ -101,21 +101,6 @@ class Hero:
                 print(f"{self.name} is DEAD! ")
                 return
 
-
-
-
-
-
-
-
-
-
-
-        # function will retun the fight method between 2 instances of hero class and
-         
-
-
-
 class Team:
     def __init__(self,name):
         self.name = name
@@ -140,14 +125,14 @@ class Team:
             if heroes.is_alive():
                 alive.append(heroes)
         return alive
+
     def attack(self, other_team):
 
         while len(self.get_alive()) > 0 and len(other_team.get_alive()) > 0:
             H1 = random.choice(self.get_alive())
             H2 = random.choice(other_team.get_alive())
             H1.fight(H2)
-        
-            
+                   
     def revive_heroes(self, health=100):
         for hero in self.heroes:
             hero.current_health = health
@@ -158,7 +143,22 @@ class Team:
             
 
 
+class Arena:
+    def __init__(self):
+        self.team_one = none
+        self.team_two = none
 
+    def create_ability(self):
+        name = input("Give your Hero an Ability!: ")
+        power = int(input('Give the Ability a power level: '))
+        ability = Ability(name,power)
+        return ability
+
+    def create_weapon(self):
+        name = input("Give your Hero a Weapon!: ")
+        power = int(input('Give the Weapon a power level: '))
+        weapon = Weapon(name,power)
+        return weapon
 
 
         
