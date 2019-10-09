@@ -1,0 +1,66 @@
+#Imagine you are creating a monster pet simulator where your have to feed
+#and play with your pet monster to make them happy
+
+class Monster:
+  '''The pet monster superclass'''
+  def __init__(self, name, color, height, catchphrase):
+    #TODO: create name, color, height, and catchphrase properties
+    #TODO: create a happiness_level property with a default value of 1 
+    pass
+  
+  def introduce_self(self):
+    '''Enables the monster to describe themselves'''
+    #TODO: print out the monster's catchphrase and some attributes of the monster
+    pass
+  
+  def feed(self, food_amount):
+    '''food increases the happiness level depending on how much food is given'''
+    #TODO: increase happiness_level by twice the food amount
+    
+  def play(self):
+    '''playing increase the happiness level by 1'''
+    #TODO: increase the happiness level by 1
+    
+  def print_happiness(self):
+    '''shows the happiness level so far'''
+    #TODO: display the monster's happiness level
+    
+    
+    
+#TODO: create a new monster class called Pixie that inherits from the Monster class
+#TODO: Pixies also have a wingspan property, create a custom __init__ method 
+#and add the wingspan property
+#TODO: Pixies can also increase their happiness levels by flying, implement this method
+
+
+
+#TODO: create a new monster class called Snorlax that inherits from the Monster class
+#TODO: Snorlaxes become very happy when they are fed, override the feed method to 
+#increase the happiness_level by 10 times the food amount
+
+
+
+#TODO: create some code to test each of the Monster, Pixie, and Snorlax classes
+
+
+
+
+#Stretch Challenge
+#The MonsterCollection class is used to store different pet monster collections and 
+#play and feed the monsters in batches
+
+#TODO: finish the class and add docstrings, feel free to make modifications!
+
+class MonsterCollection:
+  def __init__(self):
+    self.monster_list = []
+    
+  def introduce_all_monsters(self):
+    pass
+  
+  def play_all_monsters(self):
+    pass
+  
+  def feed_all_monsters(self):
+    pass
+    

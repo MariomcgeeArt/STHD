@@ -143,7 +143,7 @@ class Team:
 
     def stats(self):
         for hero in self.heroes:
-            print(f"{hero.name} has K/D of {hero.add_kills()} {hero.add_deaths()} ! ")
+            print(f"{hero.name} has K/D of {hero.kills} {hero.deaths} ! ")
             
 
 
@@ -225,6 +225,7 @@ class Arena:
             #print(self.team_one.get_alive())
 
         else:
+            
             print(f"{self.team_two.name} wins!")
             for hero in self.team_two.get_alive():
                 print(hero)
